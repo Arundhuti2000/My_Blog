@@ -5,8 +5,8 @@ import { format } from "date-fns"
 interface PostCardProps {
   post: {
     id: string
-    title: string
-    excerpt: string
+    title?: string
+    excerpt?: string
     date: string
     slug: string
     tags?: string[]
@@ -15,13 +15,19 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post }: PostCardProps) {
+  if (!post) return null
+
+  const title = post.title || "Untitled"
+  const excerpt = post.excerpt || "No excerpt available"
+  const tags = post.tags || []
+
   return (
     <article className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-gray-100">
       {/* Featured Image */}
       <div className="aspect-video bg-gradient-to-br from-pink-100 to-pink-200 overflow-hidden">
         <img
           src="/placeholder.svg?height=240&width=400"
-          alt={post.title}
+          alt={title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
         />
       </div>
@@ -37,16 +43,16 @@ export default function PostCard({ post }: PostCardProps) {
 
         {/* Title */}
         <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-500 transition-colors">
-          <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+          <Link href={`/posts/${post.slug}`}>{title}</Link>
         </h2>
 
         {/* Excerpt */}
-        <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">{post.excerpt}</p>
+        <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">{excerpt}</p>
 
         {/* Tags */}
-        {post.tags && (
+        {tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
-            {post.tags.slice(0, 3).map((tag) => (
+            {tags.slice(0, 3).map((tag) => (
               <span key={tag} className="px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full font-medium">
                 #{tag}
               </span>

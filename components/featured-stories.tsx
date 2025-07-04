@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { getAllPosts } from "@/lib/posts"
 
 const categories = [
   {
@@ -28,9 +27,29 @@ const categories = [
   },
 ]
 
-export default function FeaturedStories() {
-  const posts = getAllPosts().slice(0, 3)
+// Static featured posts data for the homepage
+const featuredPosts = [
+  {
+    id: "1",
+    title: "Welcome to My Blog",
+    excerpt: "Welcome to my personal blog where I share my thoughts and experiences.",
+    slug: "welcome-to-my-blog",
+  },
+  {
+    id: "2",
+    title: "My Journey in Tech",
+    excerpt: "Sharing my journey and experiences in the technology world.",
+    slug: "my-journey-in-tech",
+  },
+  {
+    id: "3",
+    title: "Finding Balance in a Busy World",
+    excerpt: "Exploring strategies for finding balance and peace in our busy modern lives.",
+    slug: "finding-balance-in-busy-world",
+  },
+]
 
+export default function FeaturedStories() {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,7 +70,7 @@ export default function FeaturedStories() {
 
         {/* Latest Posts */}
         <div className="grid md:grid-cols-3 gap-8">
-          {posts.map((post) => (
+          {featuredPosts.map((post) => (
             <article key={post.id} className="group">
               <Link href={`/posts/${post.slug}`}>
                 <div className="bg-gray-100 rounded-2xl h-48 mb-4 overflow-hidden">
