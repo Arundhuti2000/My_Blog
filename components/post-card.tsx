@@ -10,38 +10,56 @@ interface PostCardProps {
     date: string
     slug: string
     tags?: string[]
+    category?: string
   }
 }
 
 export default function PostCard({ post }: PostCardProps) {
   return (
-    <article className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow duration-200">
+    <article className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden border border-gray-100">
+      {/* Featured Image */}
+      <div className="aspect-video bg-gradient-to-br from-pink-100 to-pink-200 overflow-hidden">
+        <img
+          src="/placeholder.svg?height=240&width=400"
+          alt={post.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+        />
+      </div>
+
       <div className="p-6">
+        {/* Meta Info */}
         <div className="flex items-center text-sm text-gray-500 mb-3">
-          <Calendar size={16} className="mr-2" />
-          <time dateTime={post.date}>{format(new Date(post.date), "MMMM d, yyyy")}</time>
-          <Clock size={16} className="ml-4 mr-2" />
+          <Calendar size={14} className="mr-2" />
+          <time dateTime={post.date}>{format(new Date(post.date), "MMM d, yyyy")}</time>
+          <Clock size={14} className="ml-4 mr-2" />
           <span>5 min read</span>
         </div>
 
-        <h2 className="text-xl font-semibold text-gray-900 mb-3 hover:text-blue-600">
+        {/* Title */}
+        <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-pink-500 transition-colors">
           <Link href={`/posts/${post.slug}`}>{post.title}</Link>
         </h2>
 
-        <p className="text-gray-600 mb-4 leading-relaxed">{post.excerpt}</p>
+        {/* Excerpt */}
+        <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">{post.excerpt}</p>
 
+        {/* Tags */}
         {post.tags && (
           <div className="flex flex-wrap gap-2 mb-4">
-            {post.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
-                {tag}
+            {post.tags.slice(0, 3).map((tag) => (
+              <span key={tag} className="px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full font-medium">
+                #{tag}
               </span>
             ))}
           </div>
         )}
 
-        <Link href={`/posts/${post.slug}`} className="text-blue-600 hover:text-blue-700 font-medium">
-          Read more →
+        {/* Read More */}
+        <Link
+          href={`/posts/${post.slug}`}
+          className="inline-flex items-center text-pink-500 hover:text-pink-600 font-semibold"
+        >
+          Read More →
         </Link>
       </div>
     </article>
