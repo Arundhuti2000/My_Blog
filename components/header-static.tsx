@@ -6,12 +6,10 @@ export default function HeaderStatic() {
     <header className="bg-white shadow-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-pink-500 hover:text-pink-600">
             Honey's Life
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-700 hover:text-pink-500 font-medium">
               Home
@@ -36,7 +34,6 @@ export default function HeaderStatic() {
             </div>
           </nav>
 
-          {/* Mobile menu button */}
           <button className="md:hidden text-gray-700">
             <Search size={24} />
           </button>

@@ -42,7 +42,7 @@ export default function ContactPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-pink-600"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-pink-500 border-t-transparent"></div>
       </div>
     )
   }
@@ -60,7 +60,6 @@ export default function ContactPage() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Form */}
           <div className="bg-white rounded-2xl p-8 shadow-sm">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Send me a message</h2>
             <form className="space-y-6">
@@ -97,7 +96,6 @@ export default function ContactPage() {
             </form>
           </div>
 
-          {/* Contact Info */}
           <div className="space-y-8">
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <div className="flex items-center mb-4">

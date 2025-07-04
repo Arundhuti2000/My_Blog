@@ -5,14 +5,12 @@ export default function HeroSection() {
   return (
     <section className="bg-gradient-to-b from-pink-50 to-white py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Profile Image */}
         <div className="mb-8">
           <div className="w-32 h-32 mx-auto rounded-full bg-gray-200 border-4 border-white shadow-lg overflow-hidden">
             <img src="/placeholder.svg?height=128&width=128" alt="Profile" className="w-full h-full object-cover" />
           </div>
         </div>
 
-        {/* Hero Content */}
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Welcome to My World</h1>
 
         <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">

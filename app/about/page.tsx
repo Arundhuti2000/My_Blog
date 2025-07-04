@@ -42,7 +42,7 @@ export default function AboutPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-pink-600"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-pink-500 border-t-transparent"></div>
       </div>
     )
   }
@@ -52,7 +52,6 @@ export default function AboutPage() {
       <Header user={user} onSignOut={signOut} />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
         <div className="text-center mb-16">
           <div className="w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-pink-100 to-pink-200 mb-8 overflow-hidden">
             <img src="/placeholder.svg?height=160&width=160" alt="About me" className="w-full h-full object-cover" />
@@ -61,7 +60,6 @@ export default function AboutPage() {
           <p className="text-xl text-gray-600">Welcome to my little corner of the internet</p>
         </div>
 
-        {/* Content */}
         <div className="prose prose-lg max-w-none">
           <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">My Story</h2>

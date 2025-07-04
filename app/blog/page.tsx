@@ -7,8 +7,8 @@ import Header from "@/components/header"
 
 export default function BlogPage() {
   const [user, setUser] = useState<any>(null)
+  const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
-  const posts = getAllPosts()
 
   useEffect(() => {
     const initAuth = async () => {
@@ -18,17 +18,31 @@ export default function BlogPage() {
 
         const unsubscribe = onAuthStateChanged(auth, (user) => {
           setUser(user)
-          setLoading(false)
         })
 
         return () => unsubscribe()
       } catch (error) {
         console.error("Error initializing auth:", error)
-        setLoading(false)
       }
     }
 
     initAuth()
+  }, [])
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const allPosts = await getAllPosts()
+        setPosts(allPosts)
+      } catch (error) {
+        console.error("Error loading posts:", error)
+        setPosts([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadPosts()
   }, [])
 
   const signOut = async () => {
@@ -43,8 +57,11 @@ export default function BlogPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-pink-600"></div>
+      <div className="min-h-screen bg-gray-50">
+        <Header user={user} onSignOut={signOut} />
+        <div className="flex items-center justify-center py-20">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-pink-500 border-t-transparent"></div>
+        </div>
       </div>
     )
   }

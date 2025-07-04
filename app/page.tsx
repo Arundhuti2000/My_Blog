@@ -2,7 +2,6 @@ import Header from "@/components/header-static"
 import HeroSection from "@/components/hero-section"
 import FeaturedStories from "@/components/featured-stories"
 
-// This makes the page static and prevents the error
 export const dynamic = "force-static"
 
 export default function Home() {
