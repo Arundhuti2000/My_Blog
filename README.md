@@ -1,15 +1,17 @@
-# Personal Blog - Firebase Deployment
+# Personal Blog
 
-A beautiful, modern personal blog built with Next.js and ready for Firebase hosting.
+A modern, static personal blog with admin functionality and Google authentication.
 
-## 🚀 Quick Start
+## Features
 
-### Prerequisites
-- Node.js 18+ installed
-- Firebase CLI installed (`npm install -g firebase-tools`)
-- A Firebase project created
+- 🎨 Clean, modern design
+- 🔐 Google OAuth authentication for admin access
+- ✍️ Easy post creation and management
+- 📱 Fully responsive design
+- ⚡ Static site generation for fast loading
+- 🚀 Firebase hosting ready
 
-### Setup Instructions
+## Setup Instructions
 
 1. **Clone and Install**
    \`\`\`bash
@@ -17,111 +19,41 @@ A beautiful, modern personal blog built with Next.js and ready for Firebase host
    \`\`\`
 
 2. **Firebase Setup**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project
+   - Enable Authentication and add Google as a sign-in provider
+   - Enable Hosting
+   - Copy your config values
+
+3. **Environment Variables**
+   - Copy `.env.example` to `.env.local`
+   - Fill in your Firebase configuration
+   - Set `NEXT_PUBLIC_ADMIN_EMAIL` to your Gmail address
+
+4. **Development**
    \`\`\`bash
-   # Login to Firebase
+   npm run dev
+   \`\`\`
+
+5. **Deploy to Firebase**
+   \`\`\`bash
+   npm install -g firebase-tools
    firebase login
-   
-   # Initialize Firebase (if not already done)
    firebase init hosting
-   
-   # Update .firebaserc with your project ID
-   # Replace "your-project-id" with your actual Firebase project ID
+   npm run deploy
    \`\`\`
 
-3. **Build and Deploy**
-   \`\`\`bash
-   # Build the static site
-   npm run build
-   
-   # Deploy to Firebase
-   firebase deploy
-   \`\`\`
+## Usage
 
-## 📁 Project Structure
+- Visit your blog homepage to see all posts
+- Sign in with Google to access admin panel at `/admin`
+- Create new posts with title, content, excerpt, and tags
+- Posts are automatically generated with clean URLs
+- Static export ensures fast loading and easy hosting
 
-\`\`\`
-├── app/
-│   ├── about/          # About page
-│   ├── blog/           # Blog listing and individual posts
-│   ├── contact/        # Contact page
-│   ├── globals.css     # Global styles
-│   ├── layout.tsx      # Root layout
-│   └── page.tsx        # Homepage
-├── components/
-│   ├── ui/             # Reusable UI components
-│   ├── header.tsx      # Site header
-│   └── footer.tsx      # Site footer
-├── public/             # Static assets
-├── firebase.json       # Firebase configuration
-├── next.config.js      # Next.js configuration
-└── package.json        # Dependencies
-\`\`\`
+## Customization
 
-## 🎨 Customization
-
-### Update Content
-- Edit the blog posts data in `app/page.tsx` and `app/blog/page.tsx`
-- Update personal information in `app/about/page.tsx`
-- Modify contact details in `app/contact/page.tsx`
-
-### Styling
-- Colors and themes are in `tailwind.config.ts`
-- Global styles in `app/globals.css`
-- Component-specific styles use Tailwind classes
-
-### Images
-- Replace placeholder images in the `public/` folder
-- Update image paths in components
-
-## 🔧 Development
-
-\`\`\`bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm start
-\`\`\`
-
-## 📱 Features
-
-- ✅ Responsive design
-- ✅ Modern, clean UI
-- ✅ Blog post system
-- ✅ Contact form
-- ✅ About page
-- ✅ SEO optimized
-- ✅ Fast loading
-- ✅ Mobile-friendly
-
-## 🚀 Deployment
-
-The site is configured for static export and Firebase hosting. Simply run:
-
-\`\`\`bash
-npm run build
-firebase deploy
-\`\`\`
-
-Your blog will be live at: `https://your-project-id.web.app`
-
-## 📝 Adding New Blog Posts
-
-1. Add post data to the `posts` arrays in relevant files
-2. Create new post pages in `app/blog/[slug]/`
-3. Update navigation and links as needed
-
-## 🎯 Next Steps
-
-- Connect to a headless CMS (Sanity, Contentful)
-- Add a contact form backend
-- Implement search functionality
-- Add analytics tracking
-- Set up automated deployments
-
-## 📞 Support
-
-If you need help with deployment or customization, feel free to reach out!
+- Update the blog title and description in `components/header.tsx`
+- Modify the about page content in `app/about/page.tsx`
+- Customize colors and styling in the Tailwind classes
+- Add more fields to posts by updating the post structure in `lib/posts.js`
